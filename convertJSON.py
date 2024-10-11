@@ -34,6 +34,7 @@ def gatesJSON(data):
     return json.dumps(output, indent=2)
 
 def channelsJSON(data, details=False):
+    # details: get all details or only channels numbers
     result = []
     
     # Extracting the arrays from the input data
