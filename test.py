@@ -20,7 +20,7 @@ single_result = hd.calc_single_hd_features(timestamp,report=True,channel_meaning
 #------------------------------------------------
 #Get JSON output
 #------------------------------------------------
-gates = cj.gatesJSON(single_result[6]
+gates = cj.gatesJSON(single_result[6]) 
 # Call the function and print the updated data
 print(gates)
 channels = cj.channelsJSON(single_result[8],False)
