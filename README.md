@@ -9,7 +9,7 @@ https://github.com/MicFell/human_design_engine
 
 
 -------------------------------------------
-# issues to be fixed
+# issues fixed
 Error on types: 
 manifesting generator and generator compared to app.mybodygraph.com  and other bodygraph generators.
 
@@ -30,11 +30,10 @@ Ex date: 19 Jan 1973
 	- HT==TT | EM==TT |  RT==TT |  SC == TT 
 
 - **Generator**=> No connection to throat
--------------------------------------------
+
 ## Addition
 - Test.py added for testing
-- display func changed with print
-
+---------------------------------------------------------------------
 ## Supported Features
 ### Calculations of single features
 - Basic values from planetary positions
