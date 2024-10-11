@@ -1,0 +1,8 @@
+ipython==8.12.3
+numpy==2.1.2
+pandas==2.2.3
+python_dateutil==2.9.0.post0
+pytz==2024.2
+swisseph==0.0.0.dev1
+pyswisseph==2.10.3.2
+tqdm==4.66.5
