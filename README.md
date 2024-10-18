@@ -33,6 +33,7 @@ Ex date: 19 Jan 1973
 
 ## Addition
 - Test.py added for testing
+- JSON Output added
 ---------------------------------------------------------------------
 ## Supported Features
 ### Calculations of single features
