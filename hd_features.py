@@ -728,10 +728,13 @@ def calc_single_hd_features(timestamp,report=False,channel_meaning=False,day_cha
             profile = get_profile(date_to_gate_dict)
             split = get_split(active_channels_dict,active_chakras)
             variables = get_variables(date_to_gate_dict)
-
+            bdate="{}".format(timestamp[:-2])
+            cdate="{}".format(instance.create_date)
             if report == True:
-                print("birth date: {}".format(timestamp[:-2]))
-                print("create date: {}".format(instance.create_date))
+#                print("birth date: {}".format(timestamp[:-2]))
+                print("birth date: "+ bdate)
+#                print("create date: {}".format(instance.create_date))
+                print("create date: " + cdate)
                 print("energie-type: {}".format(typ))
                 print("inner authority: {}".format(auth))
                 print("inc. cross: {}".format(inc_cross))
@@ -744,7 +747,7 @@ def calc_single_hd_features(timestamp,report=False,channel_meaning=False,day_cha
                 display(pd.DataFrame(active_channels_dict))
          
     if day_chart_only==False:
-        return  typ,auth,inc_cross,inc_cross_typ,profile,split,date_to_gate_dict,active_chakras,active_channels_dict
+        return  typ,auth,inc_cross,inc_cross_typ,profile,split,date_to_gate_dict,active_chakras,active_channels_dict, bdate, cdate
     else:
         return date_to_gate_dict
 
@@ -769,6 +772,8 @@ def unpack_single_features(single_result):
     return_dict["date_to_gate_dict"] = single_result[6]
     return_dict["active_chakra"] = single_result[7]
     return_dict["active_channel"] = single_result[8]
+    return_dict["birth_date"] = single_result[9]
+    return_dict["create_date"] = single_result[10]
     
     return return_dict
 
