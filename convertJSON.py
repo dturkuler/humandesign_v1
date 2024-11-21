@@ -1,4 +1,20 @@
 import json
+import hd_constants
+def general(data):
+    output = {
+        "birth_date": data['birth_date'],
+        "create_date": data['create_date'],
+        "energie_type": data['energie_type'],
+        "inner_authority": data['inner_authority'],
+        "inc_cross": data['inc_cross'],
+        "profile": data['profile'],
+        "defined_centers": list(data['active_chakras']), 
+        "undefined_centers": list(set(hd_constants.CHAKRA_LIST) - set(data['active_chakras'])), 
+        "split": data['split'],
+        "variables": data['variables']
+  }
+  
+    return json.dumps(output, indent=2)
 
 def gatesJSON(data):
     # Initialize the structure for 'prs' and 'des'
