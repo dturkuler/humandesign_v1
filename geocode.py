@@ -8,6 +8,6 @@ def get_latitude_longitude(place):
     else:
         return None, None
 
-place = "Ankara, Turkey"
+place = "Istanbul, Turkey"
 latitude, longitude = get_latitude_longitude(place)
 print(f"Latitude: {latitude}, Longitude: {longitude}")
