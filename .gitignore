@@ -1,3 +1,6 @@
 **/__pycache__/
 **/.pytest_cache/
 **/venv/
+**/.roo/
+**/.clinerules
+**/.gitignore
