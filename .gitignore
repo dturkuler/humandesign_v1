@@ -2,6 +2,3 @@
 **/.pytest_cache/
 **/venv/
 **/.roo/
-**/.clinerules
-**/.gitignore
-**/.git
