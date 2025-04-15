@@ -13,3 +13,4 @@ requests==2.31.0
 geopy==2.4.1
 timezonefinder
 flask==2.3.2
+python-dotenv
