@@ -109,6 +109,39 @@ This file contains the MCP server for processing Human Design calculations.
 ## Usage
 To use the project, you can run the Flask API in `api_.py` and make requests to the `/calculate` endpoint. The MCP server in `mcp_server.py` can be used to process Human Design calculations.
 
+## Testing the API
+
+### Setting Up the Environment
+1. Clone the repository.
+2. Install the required packages using `pip install -r requirements.txt`.
+
+### Running the API
+1. Run the Flask API using `python api_.py`.
+2. The API will be available at `http://127.0.0.1:5000/`.
+
+### Making Sample Requests
+You can use tools like `curl` or Postman to make requests to the `/calculate` endpoint.
+
+#### Using `curl`
+```bash
+curl -X GET "http://127.0.0.1:5000/calculate?year=1990&month=1&day=1&hour=0&minute=0&second=0&tz=UTC&place=New%20York"
+```
+
+#### Using Postman
+1. Open Postman.
+2. Create a new GET request.
+3. Set the URL to `http://127.0.0.1:5000/calculate`.
+4. Add query parameters:
+   - `year`: 1990
+   - `month`: 1
+   - `day`: 1
+   - `hour`: 0
+   - `minute`: 0
+   - `second`: 0
+   - `tz`: UTC
+   - `place`: New York
+5. Send the request and view the response.
+
 ## Requirements
 - Python 3.8 or higher
 - Flask
