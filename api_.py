@@ -10,6 +10,7 @@ app = Flask(__name__)
 
 @app.route('/calculate', methods=['GET'])
 def calculate_hd():
+    
     # --- 1. Get Input Parameters ---
     try:
         birth_year = int(request.args.get('year'))
@@ -20,7 +21,7 @@ def calculate_hd():
         birth_second = int(request.args.get('second', 0)) # Default second to 0 if not provided
         birth_place = request.args.get('place')
 
-        if not all([birth_year, birth_month, birth_day, birth_hour, birth_minute is not None, birth_place]):
+        if any(v is None for v in [birth_year, birth_month, birth_day, birth_hour, birth_minute, birth_place]):
              return jsonify({"error": "Missing required query parameters (year, month, day, hour, minute, place)"}), 400
 
         birth_time = (birth_year, birth_month, birth_day, birth_hour, birth_minute, birth_second)
@@ -33,17 +34,18 @@ def calculate_hd():
     # --- 2. Geocode and Timezone ---
     try:
         latitude, longitude = get_latitude_longitude(birth_place)
-        if latitude and longitude:
+        if latitude is not None and longitude is not None:
             tf = TimezoneFinder()
             zone = tf.timezone_at(lat=latitude, lng=longitude)
             # Provide a default fallback timezone if lookup fails
             if not zone:
-                 print(f"Warning: Timezone lookup failed for {birth_place}. Falling back to UTC.")
+                 print(f"Warning: Timezone lookup failed for '{birth_place}'. Falling back to UTC.")
                  zone = 'Etc/UTC' # Fallback timezone
         else:
             # Handle geocoding failure
-            print(f"Warning: Geocoding failed for {birth_place}. Falling back to UTC timezone.")
-            zone = 'Etc/UTC' # Fallback timezone if geocoding fails
+            error_msg = f"Geocoding failed for place: '{birth_place}'. Please check the place name or try a different format."
+            print(error_msg)
+            return jsonify({"error": error_msg}), 400
 
         # --- 3. Calculate UTC Offset ---
         # Ensure birth_time is passed correctly to the offset function
@@ -56,7 +58,8 @@ def calculate_hd():
 
 
     # --- 4. Prepare Timestamp ---
-    timestamp = tuple(list(birth_time) + [hours])
+    timestamp = tuple(list(birth_time) + [int(hours)])
+    # print(f"DEBUG: timestamp={timestamp}, zone={zone}, birth_time={birth_time}, hours={hours}", flush=True)
 
     # --- 5. Calculate Human Design Features ---
     try:
@@ -64,7 +67,8 @@ def calculate_hd():
         single_result = hd.calc_single_hd_features(timestamp, report=False, channel_meaning=False, day_chart_only=False)
     except Exception as e:
         # Log the specific error for debugging
-        print(f"Error during Human Design calculation: {e}")
+        # print(f"EXCEPTION: {e}", flush=True)
+        # print(f"DEBUG: timestamp={timestamp}, zone={zone}, birth_time={birth_time}, hours={hours}", flush=True)
         return jsonify({"error": f"Error calculating Human Design features: {e}"}), 500
 
     # --- 6. Format Data for JSON Output ---

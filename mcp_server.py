@@ -30,7 +30,7 @@ class HumanDesignMCPServer:
             birth_second = int(request_args.get('second', 0))
             birth_place = request_args.get('place')
 
-            if None in [birth_year, birth_month, birth_day, birth_hour, birth_minute, birth_place]:
+            if any(v is None for v in [birth_year, birth_month, birth_day, birth_hour, birth_minute, birth_place]):
                 return None, ({"error": "Missing required query parameters (year, month, day, hour, minute, place)"}, 400)
 
             birth_time = (birth_year, birth_month, birth_day, birth_hour, birth_minute, birth_second)

@@ -702,7 +702,7 @@ def calc_single_hd_features(timestamp,report=False,channel_meaning=False,day_cha
     '''
     ####santity check for input format and values
     if ((len(timestamp)!=7)
-    | (len([elem for elem in timestamp[1:] if elem <0]))
+    | (len([elem for elem in timestamp[1:6] if elem <0]))
     | (timestamp[1]>12) 
     | (timestamp[2]>31) 
     | (timestamp[3]>24) 
