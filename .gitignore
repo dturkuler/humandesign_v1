@@ -2,3 +2,7 @@
 **/.pytest_cache/
 **/venv/
 **/.roo/
+**/.gitignore
+**/.clinerules
+**/.git/COMMIT_EDITMSG
+**/.git
