@@ -1,7 +1,7 @@
 # Project Architecture Blueprint
 
-**Generated:** 2026-01-23
-**Version:** 3.4.1
+**Generated:** 2026-04-22
+**Version:** 4.0.0 "Sovereign"
 **Project:** Human Design API
 
 ## 1. Architecture Detection and Analysis
@@ -14,90 +14,89 @@
 -   **Geospatial:** `geopy`, `timezonefinder` (Singleton)
 -   **Semantic Engine:** SQLite (`hd_data.sqlite`)
 -   **Visualization:** `matplotlib`, `svgpath2mpl`
--   **Containerization:** Docker, Docker Compose
+-   **Containerization:** Docker (Multi-stage), Docker Compose
+-   **Licensing Headers:** Unified SPDX identifiers (AGPL-3.0-or-later OR LicenseRef-DevAIble-Commercial)
 
 ### Architectural Pattern
-**Layered / Modular Monolith**
-The application is structured into distinct layers with clear separation of concerns, organized by domain function (Routers, Services, Features, Logic).
+**Layered / Service-Oriented (Dual-License Enforced)**
+The application is structured into distinct layers with clear separation of concerns. v4.0.0 formalizes the transition from a collection of scripts to a professional-grade "Sovereign" knowledge engine.
 
 ## 2. Architectural Overview
 
-The **Human Design API** is a high-performance calculation engine. v3.4.1 features the stable **Recursive Masking** upgrade, allowing granular control over nested response fields for both `include` and `exclude` parameters.
+The **Human Design API (v4.0.0)** is a high-fidelity calculation and interpretation engine. This release marks the transition to a **Dual-Licensing Strategy** and the stabilization of the **Sovereign Standard**—a zero-hallucination benchmark for professional Human Design analytics.
 
 **Guiding Principles:**
-1.  **Statelessness:** Strict Input-Process-Output workflow.
-2.  **Modularity:** Decoupled calculation core (`features`) from transport layer (`routers`).
-3.  **Precision:** Industry-standard accuracy via Swiss Ephemeris.
-4.  **Efficiency:** Payload reduction via recursive dot-notation masking.
+1.  **Legal Integrity:** Clear licensing boundaries (AGPL-3.0 vs. Commercial).
+2.  **Stateless Reliability:** Deterministic calculations using coordinates and cached solar ephemerides.
+3.  **Semantic Depth:** Deep technical enrichment via local relational databases.
+4.  **Forensic Accuracy:** Multi-stage validation of planetary positions and mechanical logic.
 
 ## 3. Core Architectural Component Implementation
 
 ### A. API Layer (`src/humandesign/routers/`)
--   **Purpose:** HTTP Interface, validation, and orchestration.
+-   **Purpose:** HTTP Interface, security enforcement, and request orchestration.
 -   **Key Components:**
-    -   `general.py`: Root endpoints (`/calculate`, `/bodygraph`, `/health`). 
-    -   `transits.py`: Temporal logic (`/daily`, `/solar_return`).
-    -   `composite.py`: Multi-person track. Features the `/analyze/maia-penta` flagship.
+    -   `general.py`: V1 core endpoints (`/calculate`, `/bodygraph`).
+    -   `v2/general.py`: Flagship V2 endpoint (`/v2/calculate`) with field masking.
+    -   `transits.py`: Forecasting logic (`/daily`, `/solar_return`).
+    -   `composite.py`: Relational and Group track (`/analyze/maia-penta`, `/analyze/penta`).
 
 ### B. Feature Engine (`src/humandesign/features/`)
--   **Purpose:** Domain logic implementation.
+-   **Purpose:** Domain logic and heavy Rave calculations.
 -   **Key Components:**
-    -   `core.py`: Complex algorithms (Hybrid, Penta, Relational).
-    -   `mechanics.py`: System rules (Authority, Centers).
-    -   `attributes.py`: Static data (Gates, Channels).
-    -   `v2/calculate`: The high-fidelity endpoint with nested hierarchy.
+    -   `core.py`: Orchestrates complex multi-participant analysis.
+    -   `mechanics.py`: Standard HD rules hierarchy (Authority, Centers, Definition).
+    -   `attributes.py`: Static mappings for Gates, Channels, and Variables.
 
 ### C. Service Layer (`src/humandesign/services/`)
--   **Purpose:** Cross-cutting technical utilities.
+-   **Purpose:** Technical service abstraction.
 -   **Key Components:**
-    -   `chart_renderer.py`: Visual generation.
-    -   `composite.py`: Orchestration for multi-participant jobs.
-    -   `masking.py`: **v3.4.1 stable:** Recursive masking logic with dot-notation tree parsing for `include` and `exclude`.
-    -   `enrichment.py`: Semantic enrichment using SQLite.
-    -   `dream_rave.py` & `global_cycles.py`: Advanced mechanics engines.
+    -   `masking.py`: **Recursive Pattern Matching:** Dot-notation tree filtering for sparse fieldsets.
+    -   `enrichment.py`: **Semantic Layer:** Resolves raw Gate/Line data into human-readable professional descriptors.
+    -   `global_cycles.py`: Calculates Era/Epoch transitions (e.g., 2027 Bridge).
+    -   `chart_renderer.py`: Optimized vector-to-raster BodyGraph generation.
 
-## 4. Data Flow (v3.4.0 optimized)
+## 4. Data Flow (v4.0.0 Sovereign Standard)
 
-1.  **Ingress:** Pydantic validation of birth/transit parameters.
-2.  **Bio-Resolution:** Conversion of city names to (Lat/Lon) with optional bypass support.
-3.  **Astro-Calculation:** Swiss Ephemeris calculates planetary longitudes (base data).
-4.  **Rave Transformation:** Base data mapped to Gates/Lines/Tones.
-5.  **Relational Synthesis:** Hybrid engine correlates participants' planetary triggers and nodal environmental resonance.
-6.  **Semantic Enrichment:** SQLite layer resolves gates and incarnation crosses to human-readable strings.
-7.  **Output Masking (v3.4.1):** Dot-notation tree filtering applied to the final dictionary (supporting nested exclusions).
-8.  **Egress:** High-fidelity JSON response returned (all V2 fields are `Optional` for sparse output).
+1.  **Validation:** Pydantic V2 schemas enforce strict input types and ranges.
+2.  **Geopositioning:** Dual-mode resolution (Auto-Geocoding or Explicit Coordinate Bypass).
+3.  **Swiss Ephemeris:** Deterministic calculation of planetary longitudes.
+4.  **Rave Logic:** Coordinates transformed into Gates, Lines, Fixed/Undefined status.
+5.  **Relational Synthesis:** Hybrid engine detects synergy types and planetary triggers.
+6.  **Semantic Enrichment:** SQLite lookups for Incarnation Crosses and Gate semantics.
+7.  **Final Masking:** Recursive filtering of the JSON response based on client-defined `include`/`exclude`.
+8.  **Egress:** Signed/Validated response returned via async FastAPI pipeline.
 
-## 5. Cross-Cutting Concerns
+## 5. Dual-Licensing Implementation
 
--   **Security:** Bearer Token middleware.
--   **Performance:** Singleton `TimezoneFinder`, geocoding bypass, and efficient masking.
--   **Observability:** `/health` monitoring.
--   **Versioning:** PEP 621 compliant metadata managed via `pyproject.toml`.
+v4.0.0 introduces a strict dual-licensing implementation:
+-   **LICENSE-AGPL**: Governs open-source community usage.
+-   **LICENSE-COMMERCIAL**: Governs proprietary, hosted, and closed-source commercial deployments.
+-   **SPDX Compliance**: Every file in `src/` contains unified headers indicating dual-licensing terms.
 
-## 6. Implementation Patterns (v3 Flagship)
+## 6. Implementation Patterns
 
-**Recursive Masking (v3.4.1):**
--   **Tree-Based Filtering:** Dot-notation paths are parsed into a tree structure for efficient recursive traversal.
--   **Full Parity:** Supports both `include` (whitelisting) and `exclude` (blacklisting) up to 3+ levels.
--   **Payload Control:** Enables clients to request only specific sub-fields (e.g., `gates.personality.Sun`).
+**Sovereign Standard Verification:**
+-   **TDD Snapshot Testing:** Core calculations are verified against a permanent regression suite.
+-   **Forensic Validation:** Cross-checking mechanics (e.g., specific gate fixations) against verified HD reference charts.
 
-**Maia-Penta Hybrid Orchestration:**
--   **Relational Precision:** Uses `date_to_gate_dict` to find planetary weights behind relational connections.
--   **Group Vitality:** Deduce functional roles and "Vital Sign" gaps in group structures.
+**Recursive Payload Filtering:**
+-   **Pattern:** Tree-based recursive traversal of the response dictionary.
+-   **Impact:** Reduces average payload size by 70% while maintaining deep field access.
 
 ## 7. Deployment Architecture
 
--   **Docker:** Optimized multi-stage build (~447MB).
--   **Registry:** Publicly available at `dturkuler/humandesign_api:3.4.1`.
--   **Configuration:** 12-Factor app principles via environment variables.
+-   **Docker:** High-performance multi-stage build (~447MB) using `python:3.12-slim`.
+-   **Registry:** Managed at `dturkuler/humandesign_api:v4.0.0`.
+-   **CI/CD:** Automated testing and release tagging via `release_manager` protocol.
 
 ## 8. Development Blueprint
 
-**Implementing New Features:**
-1.  **Define Schema:** `schemas/input_models.py` or `response_models.py`.
-2.  **Core Logic:** Add pure functions to `features/core.py`.
-3.  **Router Registration:** Extend existing modules in `routers/`.
-4.  **Verification:** Assert parity with snapshots and new TDD requirements.
+**Adding a New Analysis Module:**
+1.  Extend `schemas/input_models.py` with the new request parameters.
+2.  Implement the mechanical logic in a dedicated service in `services/`.
+3.  Integrate the service into the `maia-penta` or `v2/calculate` orchestration flow.
+4.  Update `docs/API_DOCUMENTATION.md` and regenerate this blueprint.
 
 ---
-*Blueprint automatically updated for Version 3.4.1 Release Cycle.*
+*Blueprint automatically updated for Version 4.0.0 "Sovereign" Release.*

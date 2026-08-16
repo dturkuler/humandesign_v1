@@ -112,6 +112,8 @@ def calculate_hd_v2(
         if match:
             sun_gate = int(match.group(1))
             cross_abbr = match.group(5)
+            if cross_abbr == "JXP":
+                cross_abbr = "JC"
             cross_full = hd_constants.CROSS_DB.get(sun_gate, {}).get(cross_abbr, str(cross_tuple))
         else:
             cross_full = str(cross_tuple)
