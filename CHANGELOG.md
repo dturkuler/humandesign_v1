@@ -10,6 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
  
 
+## [4.0.2] - 2026-08-16
+### Fixed
+- **Incarnation Cross Names (all endpoints)**: Juxtaposition crosses now resolve to their human-readable name in the composite endpoint (`/composite`), the serialization helper (`get_incarnation_cross_map`, used by V1 `/calculate`), and the V2 router — closing the remaining paths missed by v4.0.1. Root cause: `IC_CROSS_TYP` emits `"JXP"` while `CROSS_DB` keys the entry `"JC"`; the lookup now normalizes `JXP -> JC` via a single `hd_constants.normalize_cross_typ()` helper used by all three code paths. Adds `tests/test_inc_cross_jxp_fix.py`. (See issue #1.)
+
+
 ## [4.0.1] - 2026-08-16
 ### Fixed
 - **V2 Incarnation Cross Names**: Juxtaposition crosses now resolve to their human-readable name in `POST /v2/calculate` instead of falling back to the raw gate-tuple string. Root cause: `CROSS_DB` keys Juxtaposition entries as `"JC"` while `IC_CROSS_TYP` emits `"JXP"`; the v2 router now normalizes `JXP -> JC` before lookup. Right Angle (`RAC`) and Left Angle (`LAC`) were unaffected.

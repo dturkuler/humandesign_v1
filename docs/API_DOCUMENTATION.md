@@ -1,6 +1,6 @@
 # Human Design API Documentation
 
-**Version:** 4.0.1
+**Version:** 4.0.2
 **Base URL:** `http://localhost:8000` (or `https://api.humandesign.ai`)
 
 ## Overview
