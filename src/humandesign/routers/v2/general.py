@@ -111,9 +111,7 @@ def calculate_hd_v2(
         match = re.match(r"\(\((\d+), (\d+)\), \((\d+), (\d+)\)\)-(.+)", str(cross_tuple))
         if match:
             sun_gate = int(match.group(1))
-            cross_abbr = match.group(5)
-            if cross_abbr == "JXP":
-                cross_abbr = "JC"
+            cross_abbr = hd_constants.normalize_cross_typ(match.group(5))
             cross_full = hd_constants.CROSS_DB.get(sun_gate, {}).get(cross_abbr, str(cross_tuple))
         else:
             cross_full = str(cross_tuple)

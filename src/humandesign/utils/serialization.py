@@ -28,6 +28,7 @@ def get_incarnation_cross_map(input_string):
             
         gates_part = parts[0]
         angle_part = parts[1].strip() # e.g., "RAC", "JC", "LAC"
+        angle_part = hd_constants.normalize_cross_typ(angle_part)
 
         # 2. Extract the Personality Sun (The first number in the tuple)
         # We use Regex to find the first number after default parens

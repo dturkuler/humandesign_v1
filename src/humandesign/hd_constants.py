@@ -162,6 +162,11 @@ IC_CROSS_TYP = {
                 (6,3):"LAC",
                 }
 
+# Single source for the IC_CROSS_TYP (JXP) -> CROSS_DB (JC) key bridge.
+# All named-cross lookups must route the type code through this to avoid drift.
+def normalize_cross_typ(typ):
+    return "JC" if typ == "JXP" else typ
+
 penta_dict = {
                 31:[],
                 8:[],

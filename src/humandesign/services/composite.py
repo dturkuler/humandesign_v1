@@ -452,7 +452,7 @@ def process_person_data(name, data):
         try:
             date_to_gate = hd_data["date_to_gate_dict"]
             p_sun_gate = date_to_gate["gate"][0]
-            inc_typ = hd_data["inc_cross_typ"]
+            inc_typ = hd_constants.normalize_cross_typ(hd_data["inc_cross_typ"])
             cross_info = hd_constants.CROSS_DB.get(p_sun_gate)
             if cross_info and inc_typ in cross_info:
                  descriptive_inc_cross = cross_info[inc_typ]
