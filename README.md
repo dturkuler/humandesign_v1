@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="logo.jpg" alt="Human Design API" width="256">
+
 # Human Design API
 
 🔮⚡ High-fidelity Human Design calculation engine — birth-chart analytics, BodyGraph visualization, and Group/Penta dynamics via a FastAPI service.
