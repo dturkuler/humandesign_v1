@@ -48,3 +48,4 @@ htmlcov/
 
 # reports
 reports/
+.agents/

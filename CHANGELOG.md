@@ -9,6 +9,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
  
+
+## [4.0.1] - 2026-08-16
+### Fixed
+- **V2 Incarnation Cross Names**: Juxtaposition crosses now resolve to their human-readable name in `POST /v2/calculate` instead of falling back to the raw gate-tuple string. Root cause: `CROSS_DB` keys Juxtaposition entries as `"JC"` while `IC_CROSS_TYP` emits `"JXP"`; the v2 router now normalizes `JXP -> JC` before lookup. Right Angle (`RAC`) and Left Angle (`LAC`) were unaffected.
+- **Version Test**: `tests/test_version.py` now reads the version dynamically from `pyproject.toml` instead of asserting a hardcoded stale literal.
+
+
+## [4.0.1] - 2026-08-16
+### Fixed
+- **V2 Incarnation Cross Names**: Juxtaposition crosses now resolve to their human-readable name in `POST /v2/calculate` instead of falling back to the raw gate-tuple string. Root cause: `CROSS_DB` keys Juxtaposition entries as `"JC"` while `IC_CROSS_TYP` emits `"JXP"`; the v2 router now normalizes `JXP -> JC` before lookup. Right Angle (`RAC`) and Left Angle (`LAC`) were unaffected.
+- **Version Test**: `tests/test_version.py` now reads the version dynamically from `pyproject.toml` instead of asserting a hardcoded stale literal.
+
 ## [4.0.0] - 2026-04-22
 ### Added
 - **Dual-Licensing Model**: Transitioned to a dual-licensing strategy (AGPL-3.0 for Open Source vs. Commercial for proprietary/hosted use).
